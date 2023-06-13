@@ -1,0 +1,43 @@
+//Importing scanner class
+import java.util.Scanner;
+
+class GuessingTheNumber {
+  public static void main(String[] args) {
+    //Initializing rounds, attmepts and score variables
+    int rounds = 5;
+    int attempts = 12;
+    int score = 0;
+
+    Scanner sc = new Scanner(System.in);
+    
+    //Loop for number of rounds
+    for(int round=1; round<=rounds; round++){
+      //Initializing target to a random value between 1 and 100
+      int target = (int) ((Math.random() * (100 - 1)) + 1);
+      System.out.println();
+      System.out.println("--------------------rounds Number "+ round + "--------------------");
+      //Loop for number of attempts
+      for(int attempt=1; attempt<=attempts; attempt++){
+        System.out.println();
+        System.out.println("You still have " + (attempts-attempt+1) + " attempts to go!");
+        System.out.print("I wamt you to Guess a number between 1 to 100: ");
+        //Input from the user
+        int ans = sc.nextInt(); 
+        if(ans == target){
+          System.out.println("Your guess is correct");
+          score += (int) 100/attempt;
+          break;
+        }
+        else{
+          if(ans > target)
+            System.out.println("The Number to be guessed is less than " + ans);
+          else
+            System.out.println("The Number to be guessed is greater than " + ans);
+        }
+      }
+    }
+    sc.close();
+    System.out.println();
+    System.out.println("The Total score is " + score);
+  }
+}
